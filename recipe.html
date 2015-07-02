@@ -1,0 +1,27 @@
+<div style="height:300px;overflow:auto">
+<br>
+Ingredients:Click to select!
+<ul>
+    <li ng-repeat="x in ingredients track by $index" width="20">
+        <input type="button" ng-click="add(x,recipe)" value="{{x}}" width="20"/>
+    </li>
+</ul>
+</div>
+<div>
+    New recipe:
+<input type="text" ng-model="entered"/>
+<input type="button" ng-disabled="!entered || !recipe[0]" ng-click="save()" value="save"/>
+<ul>
+    <li ng-repeat="x in recipe track by $index" width="20">{{x}}
+        <button ng-click="remove(x,recipe)">X</button>
+    </li>
+</ul>
+</div>
+<div>
+Existing Recipes:
+   <ul>
+       <li ng-repeat="x in recipes track by $index" with="20">{{x.name}}
+           <button ng-click="remove(x,recipes)">X</button>
+       </li>
+   </ul>
+</div>

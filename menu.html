@@ -1,0 +1,22 @@
+<!--<input type="text" ng-model="entered"/>-->
+<h2>Today's Special!</h2>
+<ul>
+    <li ng-repeat="x in recipes track by $index" with="20">{{x.name}}
+        <input type="button" value="select" ng-click="sele(x)"/>
+        <ul>
+            <li ng-repeat="y in x.ingredients.sort() track by $index" with="20">{{y}}
+                <!--<button ng-click="remove(x)">X</button>-->
+            </li>
+        </ul><!--<button ng-click="remove(x)">X</button>-->
+    </li>
+</ul>
+Selected:
+<ul>
+    <li ng-repeat="z in mSelected track by $index" style="display: inline">{{z.name}}
+        <input type="button" value="X" ng-click="dele(z)"/></li>
+</ul>
+Ingredients Used:
+
+<ul>
+    <li ng-repeat="m in list track by $index" style="display: inline">{{m}}; </li>
+</ul>

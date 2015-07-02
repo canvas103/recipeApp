@@ -1,0 +1,13 @@
+<input type="text" name="ing" ng-model="entered"/>
+<input type="button" ng-disabled="!entered" ng-click="add(entered,ingredients)" value="add"/>
+<br>
+<p id="alert" style="color: red"></p>
+<table>
+<tr ng-repeat="x in ingredients.sort() track by $index">
+    <td>{{$index}}</td>
+    <td>{{x}}</td>
+    <td>    <button ng-click="remove(x)">X</button>
+
+    </td>
+</tr>
+</table>
