@@ -6,6 +6,7 @@
     <script src="./bower_components/angular/angular.min.js"></script>
     <script src="./bower_components/angular-route/angular-route.min.js"></script>
     <script src="./bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="./bower_components/bootstrap/dist/css/bootstrap.min.css"/>
     <script>
         var app =  angular.module('menuApp',['ngRoute']);
@@ -53,6 +54,7 @@
             cook.getIngredients(function(data){
                 $scope.ingredients = data;
             });
+            $scope.query='';
             $scope.add = function(name,array){
                 if (array.indexOf(name) < 0) {
                     array.push(name);
@@ -87,9 +89,7 @@
             $scope.add = function(name,array){
                 if (array.indexOf(name) < 0) {
                     array.push(name);
-                } else {
-                    return;
-                }
+                };
             };
             $scope.detail=function(array){
                 var x,y;
@@ -132,16 +132,34 @@
                 $scope.entered='';
             };
         });
+
+    </script>
+    <script>
+        $(document).ready(function(){
+            $("a").click(function(){
+                $(".active").removeClass("active");
+                $(this).parent().addClass("active");
+            });
+        });
     </script>
 </head>
 <body ng-app="menuApp">
-<div>
-    <a href="#/">Menu</a>
-    <a href="#/recipe">Recipes</a>
-    <a href="#/ingredient">Ingredients</a>
-</div>
-<div ng-view>
-</div>
+<div class="container">
+    <nav class="navbar navbar-default">
+        <div class="navbaar-header">
+            <a href="#" class="navbar-brand"><h3>Components</h3></a>
+        </div>
+        <div>
+            <ul class="nav navbar-nav">
+                <li><a href="#/" ><h3>Menu</h3></a></li>
+                <li><a href="#/recipe" ><h3>Recipes</h3></a></li>
+                <li><a href="#/ingredient" ><h3>Ingredients</h3></a></li>
+            </ul>
+        </div>
+    </nav>
 
+    <div ng-view>
+    </div>
+</div>
 </body>
 </html>

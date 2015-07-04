@@ -1,22 +1,62 @@
-<!--<input type="text" ng-model="entered"/>-->
-<h2>Today's Special!</h2>
-<ul>
-    <li ng-repeat="x in recipes track by $index" with="20">{{x.name}}
-        <input type="button" value="select" ng-click="sele(x)"/>
-        <ul>
-            <li ng-repeat="y in x.ingredients.sort() track by $index" with="20">{{y}}
-                <!--<button ng-click="remove(x)">X</button>-->
-            </li>
-        </ul><!--<button ng-click="remove(x)">X</button>-->
-    </li>
-</ul>
-Selected:
-<ul>
-    <li ng-repeat="z in mSelected track by $index" style="display: inline">{{z.name}}
-        <input type="button" value="X" ng-click="dele(z)"/></li>
-</ul>
-Ingredients Used:
+<div class="container-fluid">
 
-<ul>
-    <li ng-repeat="m in list track by $index" style="display: inline">{{m}}; </li>
-</ul>
+</div>
+<div class="row">
+    <div class="col-md-3">
+        <div class="panel panel-default" >
+        <div class="panel-heading">
+            <h4>Selected:</h4>
+        </div>
+        <div class="panel-body" style="height: 300px;overflow:auto;">
+
+                <div class="row" ng-repeat="z in mSelected track by $index">
+                    <div class="col-md-offset-1 col-md-8">
+                    <div class="thumbnail">
+                        {{z.name}}<a class="close" ng-click="dele(z)">X</a>
+                    </div>
+                    </div>
+                </div>
+
+        </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4>Ingredients Used:</h4>
+            </div>
+            <div class="panel-body">
+            <ul>
+                <li ng-repeat="m in list.sort() track by $index">{{m}}
+
+                </li>
+            </ul>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-9">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h1>Today's Special!</h1>
+            </div>
+            <div class="panel-body">
+                <div class="col-md-4 thumbnail" ng-repeat="x in recipes track by $index">
+                    <button class="btn btn-default btn-block" ng-click="sele(x)"/>
+                        <h4>{{x.name}}</h4>
+                    </button>
+                    <img data-content="Some content" title="Header" data-toggle="popover" data-trigger="hover" style="width:150px;height:150px" />
+                    <ul class="sr-only">
+                        <li ng-repeat="y in x.ingredients.sort() track by $index" with="20">
+                            {{y}}
+                        </li>
+                    </ul>
+                </div>
+                <script>
+                    $(document).ready(function(){
+                        $('[data-toggle="popover"]').popover();
+                    });
+                </script>
+            </div>
+        </div>
+
+    </div>
+</div>
+
