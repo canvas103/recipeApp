@@ -1,6 +1,3 @@
-<div class="container-fluid">
-
-</div>
 <div class="row">
     <div class="col-md-3">
         <div class="panel panel-default" >
@@ -39,21 +36,23 @@
             </div>
             <div class="panel-body">
                 <div class="col-md-4 thumbnail" ng-repeat="x in recipes track by $index">
-                    <button class="btn btn-default btn-block" ng-click="sele(x)"/>
+                    <button class="btn btn-default btn-link btn-block" ng-click="sele(x)"/>
                         <h4>{{x.name}}</h4>
                     </button>
-                    <img data-content="Some content" title="Header" data-toggle="popover" data-trigger="hover" style="width:150px;height:150px" />
+                    <img src="./thumb.jpg" title="*{{x.ingredients.sort().join('\n*')}}" data-toggle="popover" data-trigger="hover" style="width:150px;height:150px" />
+
                     <ul class="sr-only">
                         <li ng-repeat="y in x.ingredients.sort() track by $index" with="20">
                             {{y}}
                         </li>
                     </ul>
+                    <script>
+                        $(document).ready(function(){
+                            $('[data-toggle="popover"]').popover();
+                        });
+                    </script>
                 </div>
-                <script>
-                    $(document).ready(function(){
-                        $('[data-toggle="popover"]').popover();
-                    });
-                </script>
+
             </div>
         </div>
 
